@@ -1,29 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Caça ao Tesouro</title>
-      <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="style.css">
-      <script src="script.js" defer></script>
-  </head>
+<html lang="pt-BR">
 
-  
-  
-  <body>
-    <div clas="controls">
-      
-    </div>
-    
-    <main>
-      <h1 class="title">Caça ao <span>Tesouro</span></h1>
-      <div class="container">
-      <div id="massive-grid"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caça ao Tesouro</title>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <div class="title-container">
+    <h1 class="title">Caça ao <span>Tesouro</span></h1>
+  </div>
+
+  <div class="main-container">
+    <div class="menu-container">
+
+      <div class="menu">
+        <label for="guide">Ahoy, pirata!<br><br>Escolha um ponto de partida e destino clicando no grid
+          ao lado.<br><br>Nosso objetivo é encontrar o caminho mais curto até o aguardado tesouro.<br><br>Utilizamos o
+          algoritmo de busca em
+          largura (BFS) meu bom senhor(a).</label>
+
+        <button class="custom-btn btn-search" onclick="restart_obstacles()">Embaralhar Ilhas</button>
+
+        <div id="obstacle-selector">
+          <label for="num-obstacles">Número de obstáculos:</label>
+          <input type="number" id="num-obstacles" min="0" max="100" value="10">
+        </div>
+
+        <button class="custom-btn btn-search" onclick="update_obstacles()">Confirmar</button>
+
+        <div id="xy-selector">
+          <div>
+            <label for="grid-size-x">Tamanho X:</label>
+            <input type="number" id="grid-size-x" min="1" max="20" value="6">
+          </div>
+          <div>
+            <label for="grid-size-y">Tamanho Y:</label>
+            <input type="number" id="grid-size-y" min="1" max="20" value="6">
+          </div>
+        </div>
+
+        <button class="custom-btn btn-search" onclick="change_grid_size()">Confirmar</button>
+
       </div>
-    </main>
-  </body>
-  
-  <script src="./main.js"></script>
+    </div>
+
+    <div class="container">
+      <div id="massive-grid"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Desenvolvido por José Luís (190057858) e Victor Cabral (190038900), 2023</p>
+  </footer>
+
+</body>
+
 </html>
