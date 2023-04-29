@@ -11,7 +11,7 @@ let num_obstacle = 23;
 
 const pirate_music = new Audio("assets/pirate_music.mp3"); //music
 pirate_music.loop = true;
-pirate_music.volume = 0.1;
+pirate_music.volume = 0.3;
 
 function init() {
   draw_grid(grid_size_x, grid_size_y);
@@ -57,8 +57,20 @@ function add_obstacles(num_obstacle) {
   }
 }
 
-function limitInput(input) {
+function limit_input_obstacle(input) {
   if (input.value > 100) {
+    input.value = input.max;
+  }
+}
+
+function limit_input_x(input) {
+  if (input.value > 20) {
+    input.value = input.max;
+  }
+}
+
+function limit_input_y(input) {
+  if (input.value > 20) {
     input.value = input.max;
   }
 }
@@ -79,9 +91,9 @@ function square_click(event) {
   } else if (endNode === null) {
     endNode = elem;
 
-    if(draw_path() == false){
+    if(draw_path() == false) {
       elem.classList.add("end2");
-    }else{
+    }else {
     elem.classList.add("end");
     draw_path();
     }
@@ -107,6 +119,14 @@ function draw_path() {
       elem.classList.add("path");
     }
   }
+
+  let count = path.length;
+  update_step_count(count);
+}
+
+function update_step_count(count) {
+  let stepCount = document.getElementById("step-count");
+  stepCount.innerText = count - 1;
 }
 
 function clear_path() {

@@ -31,7 +31,7 @@
 
         <div id="obstacle-selector">
           <label for="num-obstacles">Número de obstáculos:</label>
-          <input type="number" id="num-obstacles" min="0" max="100" value="23" oninput="limitInput(this)">
+          <input type="number" id="num-obstacles" min="0" max="100" value="23" oninput="limit_input_obstacle(this)">
         </div>
 
         <button class="custom-btn btn-search" onclick="update_obstacles()">Confirmar</button>
@@ -39,11 +39,11 @@
         <div id="xy-selector">
           <div>
             <label for="grid-size-x">Tamanho X:</label>
-            <input type="number" id="grid-size-x" min="1" max="20" value="10">
+            <input type="number" id="grid-size-x" min="1" max="20" value="10" oninput="limit_input_x(this)">
           </div>
           <div>
             <label for="grid-size-y">Tamanho Y:</label>
-            <input type="number" id="grid-size-y" min="1" max="20" value="10">
+            <input type="number" id="grid-size-y" min="1" max="20" value="10" oninput="limit_input_y(this)">
           </div>
         </div>
 
@@ -54,6 +54,10 @@
 
     <div class="container">
       <div id="massive-grid"></div>
+    </div>
+    <div id="steps">
+      <span class="label">Número de passos: </span>
+      <span id="step-count"></span>
     </div>
   </div>
 
