@@ -1,17 +1,21 @@
 let grid_size_x = 10;
 let grid_size_y = grid_size_x;
-let square_size_height = 50;
-let square_size_width = 50;
+let square_size_height = 40;
+let square_size_width = 40;
 let grid = document.getElementById("massive-grid");
 let current_scale = 1.0;
 let path_len = grid_size_x * grid_size_y;
 let grid_matrix = [];
 let selected;
+let num_obstacle = 23;
 
+const pirate_music = new Audio("assets/pirate_music.mp3"); //music
+pirate_music.loop = true;
+pirate_music.volume = 0.1;
 
 function init() {
   draw_grid(grid_size_x, grid_size_y);
-  grid.addEventListener("wheel", scroll_handler);
+  add_obstacles(num_obstacle);
 }
 
 function draw_grid(height, width) {
@@ -31,8 +35,6 @@ function draw_grid(height, width) {
       square.style.width = `${square_size_width}px`;
       square.dataset.i = i;
       square.dataset.j = j;
-      square.addEventListener("mouseenter", square_mouseenter);
-      square.addEventListener("mouseleave", square_mouseleave);
       square.addEventListener("click", square_click);
       grid.appendChild(square);
       grid_matrix[i].push(square);
@@ -40,25 +42,70 @@ function draw_grid(height, width) {
   }
 }
 
-function square_mouseenter(event) {
-  let elem = event.target;
-  elem.classList.add("highlight");
-  draw_path(elem);
+function add_obstacles(num_obstacle) {
+  let added_obstacle = 0;
+  
+  while (added_obstacle < num_obstacle) {
+    let i = Math.floor(Math.random() * grid_size_x);
+    let j = Math.floor(Math.random() * grid_size_y);
+    let node = grid_matrix[i][j];
+    
+    if (!node.classList.contains("start") && !node.classList.contains("end") && !node.classList.contains("obstacle")) {
+      node.classList.add("obstacle");
+      added_obstacle++;
+    }
+  }
 }
 
-function square_mouseleave(event) {
-  event.target.classList.remove("highlight");
+function limitInput(input) {
+  if (input.value > 100) {
+    input.value = input.max;
+  }
 }
+
+let startNode = null;
+let endNode = null;
 
 function square_click(event) {
-  if (selected === undefined) {
-    let elem = event.target;
-    selected = elem;
-    elem.classList.add("clicked");
+  let elem = event.target;
+
+  if (elem.classList.contains("obstacle")) {
+    return;
+  }
+  
+  if (startNode === null) {
+    startNode = elem;
+    elem.classList.add("start");
+  } else if (endNode === null) {
+    endNode = elem;
+
+    if(draw_path() == false){
+      elem.classList.add("end2");
+    }else{
+    elem.classList.add("end");
+    draw_path();
+    }
   } else {
-    selected.classList.remove("clicked");
-    selected = undefined;
-    //clear_path();
+    startNode.classList.remove("start");
+    endNode.classList.remove("end");
+    endNode.classList.remove("end2");
+    startNode = elem;
+    endNode = null;
+    startNode.classList.add("start");
+    clear_path();
+  }
+}
+
+function draw_path() {
+  if (startNode === null || endNode === null) return;
+  clear_path();
+  let path = shortest_path(startNode, endNode);
+  if (path == null){
+    return false;
+  } else {
+    for (let elem of path) {
+      elem.classList.add("path");
+    }
   }
 }
 
@@ -68,118 +115,92 @@ function clear_path() {
   }
 }
 
-function draw_path(target) {
-  if (selected === undefined) return;
-  clear_path();
-  let path = shortest_path(selected, target, path_len - 1);
-
-  for (let elem of path) {
-    elem.classList.add("path");
-  }
-}
-
-
-/* BFS --> Breadth-first-search - Busca em Largura (Início)*/
-
 function shortest_path(start, end) {
-  if (start === end) return [];
-
   let visited = new Set();
   let queue = [[start, []]];
-
+  
   while (queue.length > 0) {
-    let [currentNode, path] = queue.shift();
-
-    if (visited.has(currentNode)) {
-      continue;
+    let [node, path] = queue.shift();
+    
+    if (node === end) {
+      return path.concat([node]);
     }
-
-    visited.add(currentNode);
-    path.push(currentNode);
-
-    if (currentNode === end) {
-      return path;
-    }
-
-    let neighbors = get_neighbors(currentNode);
-
-    for (let neighbor of neighbors) {
-      queue.push([neighbor, [...path]]);
+    
+    if (visited.has(node)) continue;
+    visited.add(node);
+    
+    for (let neighbor of get_neighbors(node)) {
+      if (!visited.has(neighbor)) {
+        queue.push([neighbor, path.concat([node])]);
+      }
     }
   }
-
+  
   return null;
 }
 
 function get_neighbors(node) {
-  let i = Number(node.dataset.i),
-    j = Number(node.dataset.j);
-  let neighbors = [    (grid_matrix[i - 1] || [])[j], // top
-    (grid_matrix[i] || [])[j - 1], // left
-    (grid_matrix[i] || [])[j + 1], // right
-    (grid_matrix[i + 1] || [])[j], // bottom
-  ];
-  return neighbors.filter((neighbor) => neighbor && neighbor.className !== 'obstacle');
-}
-
-/* BFS --> Breadth-first-search - Busca em Largura (Fim)*/
-
-
-
-/* DFS --> Depth-first-search - Busca Dinâmica (Início)
-function shortest_path(start, end, max = Infinity) {
-  let path = [];
-  let visited = new Set();
-  let found = dfs(start, end, path, visited, max);
-  return found ? path : [];
-}
-
-function dfs(node, end, path, visited, max) {
-  if (node === end) {
-    path.push(node);
-    return true;
-  }
-
-  if (visited.has(node)) {
-    return false;
-  }
-
-  visited.add(node);
-  path.push(node);
-
-  if (path.length >= max) {
-    return false;
-  }
-
-  let i = Number(node.dataset.i),
-    j = Number(node.dataset.j);
-  let end_x = end.offsetLeft;
-  let end_y = end.offsetTop;
-  let paths = [
-    (grid_matrix[i - 1] || [])[j - 1], // diag
-    (grid_matrix[i] || [])[j - 1],
-    (grid_matrix[i + 1] || [])[j - 1], // diag
-    (grid_matrix[i + 1] || [])[j],
-    (grid_matrix[i + 1] || [])[j + 1], // diag
+  let i = Number(node.dataset.i);
+  let j = Number(node.dataset.j);
+  let neighbors = [    (grid_matrix[i - 1] || [])[j],
     (grid_matrix[i] || [])[j + 1],
-    (grid_matrix[i - 1] || [])[j + 1], // diag
-    (grid_matrix[i - 1] || [])[j],
+    (grid_matrix[i + 1] || [])[j],
+    (grid_matrix[i] || [])[j - 1],
   ];
-
-  for (let neighbor of paths) {
-    if (neighbor === undefined) continue;
-    if (dfs(neighbor, end, path, visited, max)) {
-      return true;
-    }
-  }
-
-  path.pop();
-  return false;
+  
+  return neighbors.filter(neighbor => neighbor !== undefined && !neighbor.classList.contains("obstacle"));
 }
 
-/* DFS --> Depth-first-search - Busca Dinâmica (Fim)*/
+function restart_obstacles() {
+  // Remove all obstacles
+  let obstacles = document.querySelectorAll(".obstacle");
+  for (let obstacle of obstacles) {
+    obstacle.classList.remove("obstacle");
+  }
+  
+  startNode.classList.remove("start");
+  endNode.classList.remove("end");
+  endNode.classList.remove("end2");
+  clear_path();
 
+  // Add new obstacles
+  add_obstacles(num_obstacle);
+}
 
+function update_obstacles() {
+  let num_input = document.getElementById("num-obstacles");
+  let new_num_obstacle = parseInt(num_input.value);
+  
+  if (!isNaN(new_num_obstacle)) {
+    num_obstacle = new_num_obstacle;
+    restart_obstacles();
+  }
 
+  startNode.classList.remove("start");
+  endNode.classList.remove("end");
+  endNode.classList.remove("end2");
+  clear_path();
+}
+
+function change_grid_size() {
+  let grid_size_x_input = document.getElementById("grid-size-x");
+  let grid_size_y_input = document.getElementById("grid-size-y");
+
+  let new_grid_size_x = parseInt(grid_size_x_input.value);
+  let new_grid_size_y = parseInt(grid_size_y_input.value);
+
+  if (new_grid_size_x !== grid_size_x || new_grid_size_y !== grid_size_y) {
+    grid_size_x = new_grid_size_x;
+    grid_size_y = new_grid_size_y;
+    grid_matrix = [];
+    path_len = grid_size_x * grid_size_y;
+    grid.innerHTML = "";
+    init();
+  }
+}
 
 init();
+
+window.onclick = function() {
+  pirate_music.play();
+};

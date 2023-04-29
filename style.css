@@ -131,8 +131,8 @@ label[for="grid-size-y"] {
 }
 
 .container {
-  min-width: auto;
-  min-height: auto;
+  width: auto;
+  height: auto;
 }
 
 #massive-grid {
