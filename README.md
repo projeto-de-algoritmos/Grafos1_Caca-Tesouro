@@ -22,6 +22,12 @@ O programa possui as funções de escolher o número de obstáculos, embaralhar 
 <img src="assets/caca-tesouro_controles.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 <img src="assets/caca-tesouro_grid.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
+## Vídeo de Apresentação
+
+<a href="https://www.youtube.com/watch?v=L_0gyZoNA6s" target="_blank">
+  <img src="assets/link_video.png" alt="Apresentação">
+</a>
+
 ## Instalação 
 **Linguagem**: HTML, CSS e JavaScript<br>
 **Framework**: Não há necessidade de instalar nenhum framework. Para rodar o projeto, basta clonar o repositório e abrir o arquivo index.html no navegador ou acessar o link.<br>
@@ -33,7 +39,3 @@ Após abrir no navegador, o usuário pode selecionar o navio e o tesouro clicand
 
 ## Outros 
 Este projeto foi criado como parte do curso de Projeto de Algoritmos da Fcauldade do Gama - Universidade de Brasília (FGA-UnB). Qualquer sugestão ou contribuição é bem-vinda.
-
-
-
-
