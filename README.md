@@ -14,15 +14,11 @@ O objetivo deste projeto é criar um jogo em que o usuário seleciona um navio e
 
 ## Screenshots
 
-<img src="Grafos1_Caca-Tesouro/assets/caca-tesouro_logo.png" style="border: 2px solid black;">
-
-<img src="Grafos1_Caca-Tesouro/assets/caca-tesouro_tudo.png" style="border: 2px solid black;">
-
-<img src="Grafos1_Caca-Tesouro/assets/caca-tesouro_guia.png" style="border: 2px solid black;">
-
-<img src="Grafos1_Caca-Tesouro/assets/caca-tesouro_controles.png" style="border: 2px solid black;">
-
-<img src="Grafos1_Caca-Tesouro/assets/caca-tesouro_grid.png" style="border: 2px solid black;">
+<img src="assets/caca-tesouro_logo.png" style="display: block; margin-left: auto; margin-right: auto; width: 30%;">
+<img src="assets/caca-tesouro_tudo.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
+<img src="assets/caca-tesouro_guia.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+<img src="assets/caca-tesouro_controles.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+<img src="assets/caca-tesouro_grid.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
 ## Instalação 
 **Linguagem**: HTML, CSS e JavaScript<br>
