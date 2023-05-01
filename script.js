@@ -264,9 +264,6 @@ function restart_obstacles() {
 
   let obstacles = document.querySelectorAll(".obstacle");
 
-  if (document.getElementById("num-obstacles") == 5)
-    return;
-
   for (let obstacle of obstacles) {
     obstacle.classList.remove("obstacle");
   }
@@ -317,20 +314,17 @@ function change_grid_size() {
   let new_grid_size_x = parseInt(grid_size_x_input.value);
   let new_grid_size_y = parseInt(grid_size_y_input.value);
 
-  if (new_grid_size_x !== grid_size_x || new_grid_size_y !== grid_size_y) {
-    grid_size_x = new_grid_size_x;
-    grid_size_y = new_grid_size_y;
-    grid_matrix = [];
-    path_len = grid_size_x * grid_size_y;
+  grid_size_x = new_grid_size_x;
+  grid_size_y = new_grid_size_y;
+  grid_matrix = [];
+  path_len = grid_size_x * grid_size_y;
+  
+  grid.innerHTML = "";
 
-  }
-    grid.innerHTML = "";
-
-    draw_grid(grid_size_x, grid_size_y);
-    add_obstacles(0);  
+  draw_grid(grid_size_x, grid_size_y);
     
-    let input = document.getElementById("num-obstacles");
-    input.value = input.defaultValue;
+  let input = document.getElementById("num-obstacles");
+  input.value = input.defaultValue;
 }
 
 init();

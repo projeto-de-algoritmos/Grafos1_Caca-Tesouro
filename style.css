@@ -203,7 +203,7 @@ label[for="guide"] {
   color: var(--dark-brown);
   border: 6px solid var(--dark-brown);
   font-size: large;
-  padding: 5px;
+  padding: 20px;
   margin-right: 15px;
   background-image: url("assets/paper.png");
   background-size: cover;
