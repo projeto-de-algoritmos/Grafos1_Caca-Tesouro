@@ -1,233 +1,160 @@
-/* Colors Pallete*/
 :root {
-  --dark-blue1: #06283D;
-  --dark-blue2: #0A4D68;
-  --stroke: #16213E;
-
+  --dark-blue1: #06283d;
+  --dark-blue2: #0a4d68;
+  --stroke: #16213e;
   --blue: #088395;
-  --light-blue: #05BFDB;
-  --cyan: #00FFCA;
+  --light-blue: #8ed2f8;
+  --cyan: #00ffca;
 
-  --snow: #F6F1F1;
-  --beige: #FFDB89;
-  --light-beige: #FFF6C3;
-  --yellow: #FCE22A;
-  --green: #16FF00;
+  --snow: #f6f1f1;
+  --beige: #ffdb89;
+  --light-beige: #fff6c3;
+  --yellow: #fce22a;
+  --brown: #cd8f2b;
+  --brown1: #906821;
+
+  --green: #16ff00;
 
   --dark-red: #850000;
-  --red: #DC0000;
-  --light-red: #ED2B2A;
+  --red: #dc0000;
+  --light-red: #ed2b2a;
 
-  --brown: #603601;
-  --dark-brown: #1A120B;
-  --gray: #E4DCCF;
+  --dark-brown: #1a120b;
+  --gray: #e4dccf;
+
+
+  --min-width: 450px;
+  --max-width: 100%;
+  --mobile-breakpoint: 768px;
 }
 
 html {
   width: 100%;
   height: 100%;
-  background: url("assets/pirate.jpg") no-repeat center center fixed;
+  background: url("https://i.pinimg.com/originals/e4/15/c4/e415c48c6387706cc02f92b09501cab5.gif") no-repeat center center fixed;
   background-size: cover;
-  font-family: 'Lobster', cursive;
+  opacity: 0.98;
 }
 
-.title-container {
-  width: 500px;
-  margin: 0 auto;
+body {
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  line-height: 1.6;
+  word-spacing: 1.5px;
+  font-family: "Lobster", cursive;
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
   text-align: center;
-  background-image: url("assets/wood.jpg");
-  border-radius: 20px;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 350px;
 }
 
+.box {
+  border: 6px solid var(--dark-brown);
+  border-radius: 20px;
+  padding: 1em;
+  margin: 5vh;
+}
 
 .title {
-  color: var(--light-beige);
-  font-size: 50px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  -webkit-text-stroke: 1px var(--dark-brown);
-  background-image: url("assets/title.gif");
-  background-size: cover;
-  padding: 50px 20px;
-  display: inline-block;
-  margin: 0;
+  font-size: 24px;
+  max-width: var(--max-width);
   height: 150px;
-  width: 470px;
+  border: 0px;
+}
+
+.title-name {
+  justify-content: center;
+  align-items: center;
+  color: var(--light-beige);
+  font-size: 59px;
+  text-shadow: 5px 2px 4px rgba(0, 0, 0, 0.6);
+  -webkit-text-stroke: 1.7px var(--dark-brown);
+  background-image: url("https://talenthouse-res.cloudinary.com/image/upload/c_limit,h_1000,w_1000/v1/user-549495/submissions/rzyjnknkdoob1wcmadks.gif");
+  background-size: cover;
+  padding: 50px 19px;
+  display: inline-block;
+  margin: -20px;
+  height: 100px;
+  width: 400px;
 }
 
 h1 span {
   color: var(--yellow);
 }
 
-footer {
-  position: relative;
-  top: 10px;
-  left: 4%;
-  width: 90%;
-  height: 60px;
-  background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
-  border-radius: 20px;
-  margin-top: 10px;
-  color: white;
+.main {
+  overflow: hidden;
+  max-width: var(--max-widthh);
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.main-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 60px;
-}
-
-.menu-container {
-  width: 100%;
-  max-width: 450px;
-}
-
-.menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(2, 83, 83);
-  padding: 20px;
-  border-radius: 20px;
-  border: 6px solid var(--stroke);
-  margin-right: 30px;
-  background-image: url("assets/sand.png");
-  background-size: cover;
-}
-
-label[for="guide"] {
-  border-radius: 20px;
-  color: #000;
-  font-size: large;
-  padding: 20px;
-  background-image: url("assets/paper.png");
-  background-size: cover;
-}
-
-label[for="num-obstacles"] {
-  border-radius: 3px;
-  color: white;
-  background-color: #000;
-  padding: 5px;
-}
-
-label[for="grid-size-x"] {
-  border-radius: 3px;
-  color: white;
-  background-color: #000;
-  padding: 2px;
-}
-
-label[for="grid-size-y"] {
-  border-radius: 3px;
-  color: white;
-  background-color: #000;
-  padding: 2px;
-}
-
-.container {
-  width: auto;
-  height: auto;
-}
-
-#massive-grid {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  background-color: var(--light-blue);
+  margin-top: 40px;
+  text-align: center;
+  background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5b404798-f375-43e8-a53b-2b72c1b2ea0f/dacq5dm-61fc574b-1853-4655-9a85-66d8f0774457.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzViNDA0Nzk4LWYzNzUtNDNlOC1hNTNiLTJiNzJjMWIyZWEwZlwvZGFjcTVkbS02MWZjNTc0Yi0xODUzLTQ2NTUtOWE4NS02NmQ4ZjA3NzQ0NTcuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.DTlW335Num54BwVaCnTIFkHntdQOUoZxd7v-m24FFXo");
+  background-repeat: repeat-xy;
+  background-size: auto 50%;
+  box-shadow: inset 6px 6px rgba(0, 0, 0, 0.5);
 }
 
-.square {
-  border: 1px solid var(--dark-brown);
-  background-color: var(--blue);
+.controls {
+  margin-left: -1px;
+  margin-right: -1px;
+  margin-top: 30px;
+  min-width: 200px;
+  max-width: var(--max-width);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  -webkit-text-stroke: 0.1px var(--dark-brown);
+  color: var(--snow);
+  background-image: url("https://64.media.tumblr.com/f23c041135d06764ba7d44b3f3fa0dd7/tumblr_o3zyf0Q3rq1s335jfo1_r3_540.gif");
   background-size: cover;
+  background-position: center;
+  box-shadow: inset 6px 6px rgba(0, 0, 0, 0.4);
 }
 
-.square.path {
-  background: var(--yellow);
-
+.controls div {
+  margin-bottom: 1px;
 }
 
-.square.highlight {
-  background: var(--dark-brown);
-}
-
-.square.clicked {
-  background: var(--dark-blue1);
-}
-
-.square.start {
-  background-image: url("https://gifs.eco.br/wp-content/uploads/2022/06/gifs-de-barco-pirata-3.gif");
+.item {
+  font-size: 19px;
+  overflow: hidden;
+  width: 180px;
+  margin: 5px;
+  border: 4px solid var(--dark-brown);
+  border-radius: 30px;
+  background-image: url("https://art.pixilart.com/c2dc878546bd799.png");
   background-size: cover;
-  background-color: var(--green);
-  transform: scale(1.3);
-  border: 1px solid var(--dark-blue1);
-  border-radius: 10px 10px 10px;
-
-}
-
-.square.end {
-  background-image: url("https://cdn-icons-png.flaticon.com/512/3188/3188738.png");
-  background-size: cover;
-  background-color: var(--green);
-  transform: scale(1.3);
-  border: 1px solid var(--dark-blue1);
-  border-radius: 10px 10px 10px;
-}
-
-.square.end2 {
-  background-image: url("https://cdn-icons-png.flaticon.com/512/3188/3188738.png");
-  background-size: cover;
-  background-color: var(--red);
-  transform: scale(1.3);
-  border: 1px solid var(--dark-blue1);
-  border-radius: 10px 10px 10px;
-}
-
-.square.obstacle {
-  background-color: var(--dark-blue2);
-  background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/emojis/44370/desert-island-emoji-clipart-xl.png");
-  background-size: cover;
-  cursor: not-allowed;
-}
-
-
-button {
-  margin: 20px;
+  background-repeat: repeat-xy;
+  background-size: auto 95%;
+  box-shadow: inset 5px 5px rgba(0, 0, 0, 0.5);
+  opacity: 92%;
 }
 
 .custom-btn {
-  width: 160px;
-  height: 60px;
-  color: #000;
-  border-radius: 5px;
+  width: 100%;
+  color: var(--dark-brown);
   padding: 10px 25px;
-  font-family: 'Lobster', cursive;
-  font-weight: 600;
-  font-size: medium;
+  font-family: "Lobster", cursive;
+  font-weight: 100;
+  font-size: 20px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   position: relative;
   display: inline-block;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-    7px 7px 20px 0px rgba(0, 0, 0, .1),
-    4px 4px 5px 0px rgba(0, 0, 0, .1);
   outline: none;
 }
 
 .btn-search {
-  background: #bfbc0c;
+  background: var(--brown);
   border: none;
   z-index: 1;
 }
@@ -240,16 +167,15 @@ button {
   top: 0;
   right: 0;
   z-index: -1;
-  background-color: #663dff;
+  background-color: var(--dark-brown);
   border-radius: 5px;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-    7px 7px 20px 0px rgba(0, 0, 0, .1),
-    4px 4px 5px 0px rgba(0, 0, 0, .1);
-  transition: all 0.3s ease;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.9), 4px 4px 5px 0px rgba(0, 0, 0, 0.9);
+  transition: all 0.4s ease;
 }
 
 .btn-search:hover {
-  color: #fff;
+  color: var(--snow);
 }
 
 .btn-search:hover:after {
@@ -257,42 +183,181 @@ button {
   width: 100%;
 }
 
-#obstacle-selector {
-  margin: 10px 0;
-}
-
-#obstacle-selector label {
-  display: inline-block;
-  width: 150px;
-  font-weight: bold;
-}
-
-#obstacle-selector input {
-  width: 50px;
-  margin-right: 10px;
-}
-
-#obstacle-selector button {
-  font-size: 14px;
-  padding: 4px 8px;
-}
-
-#xy-selector {
-  margin: 10px 0;
-}
-
-#xy-selector label {
-  display: inline-block;
-  width: 150px;
-  font-weight: bold;
-}
-
+#obstacle-selector input,
 #xy-selector input {
-  width: 50px;
-  margin-right: 10px;
+  width: 45px;
+  margin-right: 1px;
+  margin-bottom: 3px;
+  background-color: var(--brown);
+  border: 1px;
+  border-radius: 10px;
+  color: var(--dark-brown);
+  font-family: "Lobster", cursive;
+  font-size: 19px;
+  padding: 7px;
+  box-shadow: inset 3px 3px rgba(0, 0, 0, 0.3);
 }
 
-#xy-selector button {
-  font-size: 14px;
-  padding: 4px 8px;
+label[for="guide"] {
+  border-radius: 20px;
+  color: var(--dark-brown);
+  border: 6px solid var(--dark-brown);
+  font-size: large;
+  padding: 5px;
+  margin-right: 15px;
+  background-image: url("assets/paper.png");
+  background-size: cover;
+  box-shadow: inset 6px 6px rgba(0, 0, 0, 0.4);
+}
+
+.grid {
+  margin-top: 30px;
+  overflow: hidden;
+  min-width: 550px;
+  width: 100%;
+  background-image: url("https://64.media.tumblr.com/1e416390b560f0f0daeca38edf34eb08/tumblr_pin20wzlDO1wzqe8ho1_1280.gif");
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 6px 6px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+#massive-grid {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+
+  opacity: 97%;
+  padding: 0px;
+  width: 320px;
+}
+
+.footer {
+  min-width: 452px;
+  max-width: 100%;
+
+  margin-top: -60px;
+
+  text-align: center;
+  font-size: 30px;
+  color: var(--snow);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 6px 6px rgba(0, 0, 0, 0.6);
+  -webkit-text-stroke: 1px var(--beige);
+
+  background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d31c273-9de7-4575-9773-8f4bcd21de30/ddfyygh-e6ddb2ab-885d-4ccd-91dc-074357b3d9a6.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBkMzFjMjczLTlkZTctNDU3NS05NzczLThmNGJjZDIxZGUzMFwvZGRmeXlnaC1lNmRkYjJhYi04ODVkLTRjY2QtOTFkYy0wNzQzNTdiM2Q5YTYuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.HwGWUpB4uyJvMs0Zik6WhM3TLloc1SrXgESJToUomwE");
+  background-size: cover;
+  background-position: 0px 0px;
+  border-radius: 0px 0px 100px 100px;
+  padding: 20px;
+  letter-spacing: 1px;
+}
+
+.square {
+  border: 1px solid var(--dark-brown);
+  background-color: var(--blue);
+  background-size: cover;
+}
+
+.square.path {
+  background-color: var(--yellow);
+}
+
+.square.highlight {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/ba/Red_x.svg");
+  background-size: cover;
+}
+
+.square.clicked {
+  background: var(--dark-blue1);
+}
+
+.square.start {
+  background-image: url("https://media1.giphy.com/media/j2HThVbydxrvyljqq0/giphy.gif?cid=6c09b9526d4rt2mcpngnb4jupnl3wf7evq9d8eszyvxqb7z3&rid=giphy.gif&ct=s");
+  /* https://gifs.eco.br/wp-content/uploads/2022/06/gifs-de-barco-pirata-3.gif */
+  /* https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/05ba53280252abd.png */
+  background-size: 125%;
+  background-position: center 50%;
+  background-color: var(--green);
+  transform: scale(1.3);
+  border: 1px solid var(--dark-blue1);
+  border-radius: 10px 10px 10px;
+}
+
+.square.end {
+  background-image: url("https://images.squarespace-cdn.com/content/v1/5c86919db7c92c1344bc8064/1679641884854-K6H8YJUYJ61QZVMIG5VB/captChestIdleHit.gif?format=500w");
+  /* https://cdn-icons-png.flaticon.com/512/3188/3188738.png */
+  /*  */
+  background-size: 170%;
+  background-position: center 45%;
+  background-color: var(--green);
+  transform: scale(1.3);
+  border: 1px solid var(--dark-blue1);
+  border-radius: 10px 10px 10px;
+}
+
+.square.end2 {
+  background-image: url("https://thumbs.gfycat.com/SpecificTameAustralianfurseal-max-1mb.gif");
+  background-size: 140%;
+  background-position: center 50%;
+  background-repeat: no-repeat;
+
+  background-color: var(--red);
+  transform: scale(1.3);
+  border: 1px solid var(--dark-blue1);
+  border-radius: 10px 10px 10px;
+}
+
+.square.obstacle {
+  background-color: var(--brown1);
+  background-repeat: no-repeat;
+  cursor: not-allowed;
+}
+
+.obstacle-1 {
+  background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/emojis/44370/desert-island-emoji-clipart-xl.png);
+  background-size: 150%;
+  background-position: center 35%;
+}
+
+.obstacle-2 {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5c86919db7c92c1344bc8064/1679642191387-KW94VVQ51MF8VH5BRCNV/goldNuggitX3.gif?format=1500w);
+  background-size: 70%;
+  background-position: center 95%;
+}
+
+.obstacle-3 {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5c86919db7c92c1344bc8064/1679642329768-R7J9PRUDJUJKW3BYPCDQ/babkyKraken.gif?format=1500w);
+  background-size: 170%;
+  background-position: center 40%;
+}
+
+.obstacle-4 {
+  background-image: url(https://thumbs.gfycat.com/AccomplishedOldfashionedHeron-max-1mb.gif);
+  background-size: 120%;
+  background-position: center;
+}
+
+
+@media screen and (max-width: var(--mobile-breakpoint)) {
+  .main {
+    flex-direction: column;
+  }
+
+  .box {
+    min-height: 0;
+  }
+
+  .controls {
+    order: 1;
+  }
+
+  .grid {
+    order: 2;
+    min-width: auto;
+    max-width: auto;
+  }
 }
