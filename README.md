@@ -37,7 +37,7 @@ Acessar o link <https://projeto-de-algoritmos.github.io/Grafos1_Caca-Tesouro/>
 
 Após abrir no navegador, o usuário pode selecionar o navio e o tesouro clicando em dois quadrados no mapa. O programa irá então calcular o caminho mais curto utilizando o algoritmo BFS ou DFS e exibir o caminho no mapa. 
 
-Observação: estamos trabalhando na responsividade dos elementos, então recomendo manter o zoom da página em 100% para evitar a quebra do grid.
+**Observação:** estamos trabalhando na responsividade dos elementos, então recomendo manter o zoom da página em 100% para evitar a quebra do grid.
 
 ## Outros 
 Este projeto foi criado como parte do curso de Projeto de Algoritmos da Fcauldade do Gama - Universidade de Brasília (FGA-UnB). Qualquer sugestão ou contribuição é bem-vinda.
